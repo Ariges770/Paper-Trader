@@ -2,7 +2,7 @@ from sqlalchemy import select, insert, update, delete
 from sqlalchemy import Select, Insert, Update, Delete, Engine
 from sqlalchemy.orm import Session, scoped_session
 # from sqlalchemy.orm import Session, sessionmaker
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from decimal import Decimal
 from typing import Union, Any
@@ -14,6 +14,8 @@ from database.database import db_SessionLocal, db_SessionLoc
 
 
 def dbconnect(func):
+    
+    @wraps(func)
     def inner(*args, **kwargs):
         kwargs["db_session"] = db_SessionLoc  # with all the requirements
         try:
@@ -24,24 +26,8 @@ def dbconnect(func):
         finally:
             kwargs["db_session"].commit()
             kwargs["db_session"].remove()
+    # inner.__name__ = func.__name__
     return inner
-
-# def dbcommit(func):
-    
-#     def inner(*args, **kwargs):
-#         # with all the requirements
-#         if kwargs.get("db_session"):
-#             db_session = kwargs["db_session"]
-#         else:
-#             raise
-#         try:
-#             return func(db_session, *args, **kwargs)
-#         except:
-#             db_session.rollback()
-#             raise
-#         finally:
-#             db_session.commit()
-#     return inner
 
 def dbcommit(func):
     
@@ -60,4 +46,5 @@ def dbcommit(func):
         finally:
             db_session.commit()
             
+    # commit.__name__ = func.__name__
     return commit

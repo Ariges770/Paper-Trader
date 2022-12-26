@@ -4,19 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    
     <title>Paper Trader and Finance API</title>
-<!--
+    <!--
 DREAM PULSE
 https://templatemo.com/tm-536-dream-pulse
 -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
-    <link rel="stylesheet" href="/static/css/all.min.css" />
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/static/slick/slick.css"/>    
-    <link rel="stylesheet" href="/static/slick/slick-theme.css"/>    
-    <link rel="stylesheet" href="/static/css/magnific-popup.css">
-    <link rel="stylesheet" href="/static/css/templatemo-dream-pulse.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+<link rel="stylesheet" href="/static/css/all.min.css" />
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/slick/slick.css"/>    
+<link rel="stylesheet" href="/static/slick/slick-theme.css"/>    
+<link rel="stylesheet" href="/static/css/magnific-popup.css">
+<link rel="stylesheet" href="/static/css/templatemo-dream-pulse.css" />
+<link rel="icon" href="https://site-assets.fontawesome.com/releases/v6.2.1/svgs/solid/arrow-trend-up.svg">
   </head>
   <body>
     <main class="container-fluid">
@@ -66,6 +67,71 @@ https://templatemo.com/tm-536-dream-pulse
                   </a>
                 </li>
               </ul>
+              
+              <form action="\auth\login" method="POST" class="border rounded form-group tm-contact-form">
+
+                <div class="form-group">
+                  <input type="email" id="login_email" name="login_email" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Your Email" required="" />
+                </div>
+                
+                <div class="form-group">
+                  <input type="password" id="login_password" name="login_password" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Your Password" required="" />
+                </div>
+
+                <div class="form-group ag-wrong-input">
+                  <span>{{session.get("login_statement") if session.get("login_statement") != None}}</span>
+                </div>
+
+                <div class="form-group">
+                  <div class="row justify-content-around">
+                    <button type="submit" class="btn d-block ml-center tm-btn-primary">
+                      Login
+                    </button>
+                    <!-- <div class="col-4">
+                      <button type="submit" class="btn d-block ml-center tm-btn-primary">
+                        Login
+                      </button>
+                    </div>
+                    <div class="col-8">
+                      <button type="submit" class="btn d-block ml-center tm-btn-primary">
+                        Google Login
+                      </button>
+                    </div> -->
+                  </div>
+                </div>
+              </form>
+              
+              <form action="\auth\register" method="POST" class="border rounded form-group tm-contact-form">
+
+                <div class="form-group">
+                  <input type="email" id="register_email" name="register_email" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Your Email" required="" />
+                </div>
+                
+                <div class="form-group">
+                  <input type="email" id="verify_email" name="verify_email" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Verify Email" required="" />
+                </div>
+                
+                <div class="form-group">
+                  <input type="password" id="register_password" name="register_password" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Your Password" required="" />
+                </div>
+                
+                <div class="form-group">
+                  <input type="password" id="verify_password" name="verify_password" class="form-control ag-input-box rounded-0 border-top-0 border-right-0 border-left-0" autocomplete="off" placeholder="Verify Password" required="" />
+                </div>
+
+                <div class="form-group ag-wrong-input">
+                  <span>{{session.get("register_statement") if session.get("register_statement") != None}}</span>
+                </div>
+
+                <div class="form-group">
+                  <div class="row justify-content-around">
+                      <button type="submit" class="btn d-block ml-center tm-btn-primary">
+                        Register
+                      </button>
+                  </div>
+                </div>
+              </form>
+                  
               <ul class="nav flex-row tm-social-links">
                 <li class="nav-item">
                   <a href="https://facebook.com" class="nav-link tm-social-link">
@@ -249,27 +315,6 @@ https://templatemo.com/tm-536-dream-pulse
                     </div>                  
                   </div>     
               </div>         
-            </section>
-          </div>
-
-          <div class="tm-section-wrap bg-white">
-            <section id="work" class="row tm-section">
-              <div class="col-12">
-                <div class="w-100 tm-double-border-1 tm-border-gray">
-                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                      <div class="tm-gallery-wrap">
-                        <div class="row">
-                            <div class="col-sm border">
-                              <h3>Sign In</h3>
-                            </div>
-                            <div class="col-sm border">
-                              <h3>Sign Up</h3>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
             </section>
           </div>
             
